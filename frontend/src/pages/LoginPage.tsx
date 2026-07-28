@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import GoogleButton from '../components/GoogleButton'
 
 export default function LoginPage() {
   const { login } = useAuth()
@@ -41,6 +42,21 @@ export default function LoginPage() {
             </div>
           )}
 
+          {/* Botón de Google */}
+          <div className="mb-6">
+            <GoogleButton />
+          </div>
+
+          {/* Separador */}
+          <div className="relative mb-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-3 bg-white text-gray-400">o con email</span>
+            </div>
+          </div>
+
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
@@ -56,7 +72,12 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1.5">Contraseña</label>
+              <div className="flex items-center justify-between mb-1.5">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">Contraseña</label>
+                <Link to="/forgot-password" className="text-xs text-accent hover:underline font-medium">
+                  ¿Olvidaste tu contraseña?
+                </Link>
+              </div>
               <input
                 id="password"
                 type="password"

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
+import GoogleButton from '../components/GoogleButton'
 
 export default function RegisterPage() {
   const { register } = useAuth()
@@ -78,6 +79,21 @@ export default function RegisterPage() {
               {error}
             </div>
           )}
+
+          {/* Botón de Google */}
+          <div className="mb-6">
+            <GoogleButton />
+          </div>
+
+          {/* Separador */}
+          <div className="relative mb-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-200"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-3 bg-white text-gray-400">o con email</span>
+            </div>
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
